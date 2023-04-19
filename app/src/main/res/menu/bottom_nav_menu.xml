@@ -19,7 +19,7 @@
     <item
         android:id="@+id/heart"
         android:icon="@drawable/video"
-        android:title="@string/heart" />
+        android:title="@string/Reel"/>
     <item
         android:id="@+id/profile"
         android:icon="@drawable/user"
