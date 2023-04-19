@@ -27,4 +27,9 @@
         android:name="com.example.instagram5.ui.heart.heartFragment"
         android:label="@string/heart"
         tools:layout="@layout/fragment_heart" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.instagram5.ui.Profile.ProfileFragment"
+        android:label="@string/Profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
