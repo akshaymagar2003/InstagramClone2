@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/heart"
         android:name="com.example.instagram5.ui.heart.heartFragment"
-        android:label="@string/heart"
+        android:label="@string/Reel"
         tools:layout="@layout/fragment_heart" />
     <fragment
         android:id="@+id/profile"
