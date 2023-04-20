@@ -33,18 +33,17 @@
         android:layout_marginEnd="75dp"
         android:background="@drawable/search" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="231dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/rectangle_4"
-
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="205dp"
-        android:layout_marginBottom="17dp"
-        android:gravity="center|center_horizontal"
-        android:text="Search"
-        android:textSize="16sp" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="641dp"
+        android:ems="10"
+        android:hint="Search"
+        android:inputType="textPersonName" />
 
     <View
         android:id="@+id/view4"
