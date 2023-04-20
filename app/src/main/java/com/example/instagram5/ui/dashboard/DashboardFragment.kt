@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -33,8 +32,14 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
-        init()
+
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        init()
+        super.onViewCreated(view, savedInstanceState)
+    }
+
 
     private fun init() {
         itemList= ArrayList()
@@ -42,7 +47,7 @@ class DashboardFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
 addToList()
-        itemAdapter=ItemAdapter(itemList)
+        itemAdapter= ItemAdapter(itemList)
         recyclerView.adapter=itemAdapter
 
     }
