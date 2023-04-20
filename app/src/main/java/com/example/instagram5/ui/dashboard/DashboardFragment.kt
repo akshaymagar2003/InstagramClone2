@@ -8,11 +8,15 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.instagram5.R
 import com.example.instagram5.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
+    private lateinit var itemList: ArrayList<Int>
+    private lateinit var itemAdapter: ItemAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -33,9 +37,23 @@ class DashboardFragment : Fragment() {
     }
 
     private fun init() {
+        itemList= ArrayList()
         recyclerView= binding.recyclerView
         recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+addToList()
+        itemAdapter=ItemAdapter(itemList)
+        recyclerView.adapter=itemAdapter
 
+    }
+    private fun addToList(){
+        itemList.add(R.drawable.flower1)
+        itemList.add(R.drawable.flower2)
+        itemList.add(R.drawable.flower3)
+        itemList.add(R.drawable.flower4)
+        itemList.add(R.drawable.flower1)
+        itemList.add(R.drawable.flower2)
+        itemList.add(R.drawable.flower3)
     }
 
     override fun onDestroyView() {
