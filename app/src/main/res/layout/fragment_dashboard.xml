@@ -19,6 +19,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <View
+        android:id="@+id/search"
+        android:layout_width="31dp"
+        android:layout_height="24dp"
+        android:layout_alignStart="@+id/rectangle_4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="75dp"
+        android:background="@drawable/search" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rectangle_4"
+
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="205dp"
+        android:layout_marginBottom="17dp"
+        android:gravity="center|center_horizontal"
+        android:text="Search"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/text_dashboard"
+        android:layout_marginTop="127dp"
+        android:layout_marginBottom="265dp"
+        android:background="@color/statusbar" />
+
     <TextView
         android:id="@+id/text_dashboard"
         android:layout_width="match_parent"
@@ -27,7 +63,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="459dp"
+        android:layout_marginBottom="339dp"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
