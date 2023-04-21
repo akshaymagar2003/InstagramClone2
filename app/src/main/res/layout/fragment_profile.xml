@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+
 android:layout_width="match_parent"
 android:layout_height="match_parent">
 
-<RelativeLayout
+    <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/relLayout1">
 
     <include layout="@layout/snippet_top_view_profilebar"/>
 
-</RelativeLayout>
+<!--        <View-->
+<!--            android:id="@+id/left_bar_"-->
+<!--            android:layout_width="89dp"-->
+<!--            android:layout_height="15dp"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_marginStart="9dp"-->
+<!--            android:layout_marginLeft="9dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:background="#00000000" />-->
+
+        <include layout="@layout/layout_center_view_profile"/>
+
+
+    </RelativeLayout>
 
 
 
