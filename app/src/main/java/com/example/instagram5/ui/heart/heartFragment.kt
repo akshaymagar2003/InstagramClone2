@@ -56,13 +56,46 @@ class heartFragment : Fragment() {
                 "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
             )
         )
+        adapter = VideoAdapter( videos, object : VideoAdapter.OnVideoPreparedListener {
+            override fun onVideoPrepared(exoPlayerItem: ExoPlayerItem) {
+                exoPlayerItems.add(exoPlayerItem)
+            }
+        })
+        binding.viewpage2.adapter = adapter
 
 
         super.onViewCreated(view, savedInstanceState)
 
     }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+
+    override fun onPause() {
+        super.onPause()
+
+        val index = exoPlayerItems.indexOfFirst { it.position == binding.viewpage2.currentItem }
+        if (index != -1) {
+            val player = exoPlayerItems[index].exoPlayer
+            player.pause()
+            player.playWhenReady = false
+        }
+    }
+    override fun onResume() {
+        super.onResume()
+
+        val index = exoPlayerItems.indexOfFirst { it.position == binding.viewpage2.currentItem }
+        if (index != -1) {
+            val player = exoPlayerItems[index].exoPlayer
+            player.playWhenReady = true
+            player.play()
+        }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        if (exoPlayerItems.isNotEmpty()) {
+            for (item in exoPlayerItems) {
+                val player = item.exoPlayer
+                player.stop()
+                player.clearMediaItems()
+            }
+        }
     }
 }
