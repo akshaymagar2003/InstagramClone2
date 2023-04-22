@@ -2,7 +2,6 @@ package com.example.instagram5.ui.heart
 
 import android.content.Context
 import android.net.Uri
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSource
 
 
 class VideoAdapter(
-    var context: Context,
+//    var context: Context,
     var videos: ArrayList<Vedio>,
     var videoPreparedListener: OnVideoPreparedListener
 ) : RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {

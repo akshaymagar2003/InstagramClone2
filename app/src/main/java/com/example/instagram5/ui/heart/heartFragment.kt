@@ -1,42 +1,65 @@
 package com.example.instagram5.ui.heart
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import com.example.instagram5.R
-import com.example.instagram5.databinding.FragmentDashboardBinding
+import androidx.fragment.app.Fragment
 import com.example.instagram5.databinding.FragmentHeartBinding
-import com.example.instagram5.ui.dashboard.DashboardViewModel
 
 class heartFragment : Fragment() {
     private var _binding: FragmentHeartBinding? = null
     private val binding get() = _binding!!
+    private lateinit var adapter: VideoAdapter
+    private val videos = ArrayList<Vedio>()
+    private val exoPlayerItems = ArrayList<ExoPlayerItem>()
 
     companion object {
         fun newInstance() = heartFragment()
     }
 
-    private lateinit var viewModel: HeartViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val heartViewModel =
-            ViewModelProvider(this).get(HeartViewModel::class.java)
+
 
         _binding = FragmentHeartBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHeart
-        heartViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
         return root
+
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        videos.add(
+            Vedio(
+                "Big Buck Bunny",
+                "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            )
+        )
+
+        videos.add(
+            Vedio(
+                "Elephant Dream",
+                "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+            )
+        )
+
+        videos.add(
+            Vedio(
+                "For Bigger Blazes",
+                "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+            )
+        )
+
+
+        super.onViewCreated(view, savedInstanceState)
+
     }
     override fun onDestroyView() {
         super.onDestroyView()
