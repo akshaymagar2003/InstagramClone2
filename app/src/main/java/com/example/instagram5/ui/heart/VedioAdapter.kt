@@ -72,8 +72,8 @@ class VideoAdapter(
         parent: ViewGroup,
         viewType: Int
     ): VideoAdapter.VideoViewHolder {
-        val view=EachVedioBinding.inflate(LayoutInflater.from(context),parent,false)
-        return VideoViewHolder(view,context,videoPreparedListener)
+        val view=EachVedioBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return VideoViewHolder(view,parent.context,videoPreparedListener)
     }
 
     override fun onBindViewHolder(holder: VideoAdapter.VideoViewHolder, position: Int) {
