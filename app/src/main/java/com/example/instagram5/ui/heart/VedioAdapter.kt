@@ -3,6 +3,7 @@ package com.example.instagram5.ui.heart
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -72,15 +73,18 @@ class VideoAdapter(
         parent: ViewGroup,
         viewType: Int
     ): VideoAdapter.VideoViewHolder {
-        TODO("Not yet implemented")
+        val view=EachVedioBinding.inflate(LayoutInflater.from(context),parent,false)
+        return VideoViewHolder(view,context,videoPreparedListener)
     }
 
     override fun onBindViewHolder(holder: VideoAdapter.VideoViewHolder, position: Int) {
-        TODO("Not yet implemented")
+      val model=videos[position]
+        holder.binding.tvTitle.text=model.title
+        holder.setVedioPath(model.url)
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return videos.size
     }
     interface OnVideoPreparedListener {
         fun onVideoPrepared(exoPlayerItem: ExoPlayerItem)
