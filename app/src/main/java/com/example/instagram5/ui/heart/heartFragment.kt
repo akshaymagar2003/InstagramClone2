@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import com.example.instagram5.databinding.FragmentHeartBinding
 
 class heartFragment : Fragment() {
@@ -36,6 +37,7 @@ class heartFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         videos.add(
             Vedio(
                 "Big Buck Bunny",
@@ -62,9 +64,29 @@ class heartFragment : Fragment() {
             }
         })
         binding.viewpage2.adapter = adapter
+      binding.viewpage2.registerOnPageChangeCallback(object :ViewPager2.OnPageChangeCallback(){
+          override fun onPageSelected(position: Int) {
+              super.onPageSelected(position)
+              val previousIndex = exoPlayerItems.indexOfFirst { it.exoPlayer.isPlaying }
+              if (previousIndex != -1) {
+                  val player = exoPlayerItems[previousIndex].exoPlayer
+                  player.pause()
+                  player.playWhenReady = false
+              }
+
+              val newIndex = exoPlayerItems.indexOfFirst { it.position == position }
+              if (newIndex != -1) {
+                  val player = exoPlayerItems[newIndex].exoPlayer
+                  player.playWhenReady = true
+                  player.play()
+              }
 
 
-        super.onViewCreated(view, savedInstanceState)
+          }
+
+      })
+
+
 
     }
 
