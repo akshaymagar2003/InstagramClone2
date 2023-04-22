@@ -1,15 +1,20 @@
 package com.example.instagram5.ui.heart
 
 import android.content.Context
+import android.net.Uri
 import android.provider.MediaStore
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram5.databinding.EachVedioBinding
 import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.PlaybackException
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.source.MediaSource
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.upstream.DefaultDataSource
 
 
 class VideoAdapter(
@@ -35,7 +40,30 @@ class VideoAdapter(
                     Toast.makeText(context, "Can't play this video", Toast.LENGTH_SHORT).show()
                 }
 
+                override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
+                    if(playbackState==Player.STATE_BUFFERING){
+                        binding.pbLoading.visibility=View.VISIBLE
+                    }
+                    else if(playbackState==Player.STATE_READY){
+                        binding.pbLoading.visibility=View.GONE
+                    }
+                }
             })
+
+            binding.playerView.player=exoPlayer
+            exoPlayer.seekTo(0)
+            exoPlayer.repeatMode=Player.REPEAT_MODE_ONE
+            val dataSourceFactory=DefaultDataSource.Factory(context)
+            mediaSource=ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(
+                MediaItem.fromUri(Uri.parse(url)))
+            exoPlayer.setMediaSource(mediaSource)
+            exoPlayer.prepare()
+            if (absoluteAdapterPosition==0){
+                exoPlayer.playWhenReady=true
+                exoPlayer.play()
+
+            }
+            videoPreparedListener.onVideoPrepared(ExoPlayerItem(exoPlayer,absoluteAdapterPosition))
         }
 
     }
